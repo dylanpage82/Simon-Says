@@ -1,0 +1,56 @@
+body{
+    background-color: gray;
+    
+}
+#container{
+    position: relative;
+    text-align: center;
+    padding-top: 10%;
+}
+.simon{
+    display: inline-block;
+    height: 220px;
+    width: 220px;
+    border:solid black;
+    
+    
+}
+.red{
+    background-color: red;
+    border-top-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+    
+}
+.green{
+    background-color: green;
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+}
+.blue{
+    background-color: blue;
+    border-bottom-right-radius: 100%;
+    border-top-left-radius: 100%;
+}
+.yellow{
+    background-color: yellow;
+    border-bottom-left-radius: 100%;
+    border-top-right-radius: 100%;
+}
+.start{
+    font-size: 40px;
+    border-radius: 50%;
+    background-color: gold;
+    position:absolute;
+    left:50%;
+    top:64%;
+    transform:translate(-50%, -50%);
+    height: 30%;
+    width: 10%;
+}
+.start:hover{
+    cursor:cell;
+    background-color: hotpink;
+}
+.score{
+    font-size:40px;
+}
