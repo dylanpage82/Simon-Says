@@ -172,3 +172,4 @@ function winGame(){
     counter.innerHTML = 'YOU WIN!'
     win = true;
 }
+//
