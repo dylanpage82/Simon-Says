@@ -15,24 +15,24 @@ const hardButton = document.querySelector('.hard');
 let beginner = false;
 let intermediate = false;
 let hard = false;
-let rank = false;///level selected
+let rank = false;///level selected (can be any level just a indicator)
 let win = false;
 let computerPlays;///number of times the computer turn has ran
-
 
 
 function play () {
     computerPlays = 0;
     intervalId = 0;
     playerTurn = 1;
-    counter.innerHTML= 1;
+    counter.innerHTML= playerTurn;
     for(i=0; i<=20; i++){
-        computerChoices.push(Math.ceil(Math.random() *4));
+         computerChoices.push(Math.ceil(Math.random() *4));
     }
     computerTurn = true;
-    intervalId=setInterval(gameTurn, 1000)
+    intervalId=setInterval(gameRound, 1000)
 }
-function gameTurn(){
+function gameRound(){
+
     if(computerPlays == playerTurn){
         clearInterval(intervalId);
         computerTurn = false;
@@ -43,15 +43,23 @@ function gameTurn(){
         setTimeout(() => {
             if(computerChoices[computerPlays] ==1){
                 green.classList.add('active')
+                const audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+                audio.play();  
             }
             if(computerChoices[computerPlays] ==2){
                 red.classList.add('active')
+                const audio = new Audio(`https://s3.amazonaws.com/freecodecamp/simonSound2.mp3`);
+                audio.play();   
             }
             if(computerChoices[computerPlays] ==3){
                 yellow.classList.add('active')
+                const audio = new Audio(`https://s3.amazonaws.com/freecodecamp/simonSound3.mp3`);
+                audio.play();
             }
             if(computerChoices[computerPlays] ==4){
                 blue.classList.add('active')
+                const audio = new Audio(`https://s3.amazonaws.com/freecodecamp/simonSound4.mp3`);
+                audio.play();
             }
             computerPlays++
         }, 300);
@@ -88,7 +96,7 @@ function checkAnswers(){
         computerTurn = true;
         computerPlays = 0;
         counter.innerHTML = playerTurn;
-        intervalId = setInterval(gameTurn, 1000);
+        intervalId = setInterval(gameRound, 1000);
     }
 }
 function openModal(){
@@ -128,6 +136,8 @@ green.addEventListener('click', () =>{
         return;
     }else{
         playerChoices.push(1);
+        const audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+        audio.play(); 
         checkAnswers();
     }
 });
@@ -137,7 +147,10 @@ red.addEventListener('click', () =>{
         return;
     }else{
     playerChoices.push(2);
+    const audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3');
+    audio.play(); 
     checkAnswers();
+
     }
 });
 
@@ -146,6 +159,8 @@ yellow.addEventListener('click', () =>{
         return;
     }else{
     playerChoices.push(3);
+    const audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3');
+        audio.play(); 
     checkAnswers();
     }
 });
@@ -155,6 +170,8 @@ blue.addEventListener('click', () => {
         return;
     }else{
     playerChoices.push(4);
+    const audio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3');
+    audio.play(); 
     checkAnswers();
     }
 });
@@ -172,4 +189,3 @@ function winGame(){
     counter.innerHTML = 'YOU WIN!'
     win = true;
 }
-//

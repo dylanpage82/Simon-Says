@@ -1,5 +1,6 @@
 body{
-    background-color: gray;
+    background: rgb(122,121,92);
+    background: linear-gradient(90deg, rgba(122,121,92,1) 0%, rgba(199,183,98,1) 0%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +48,6 @@ body{
     font-size:x-large;
     text-align: center;
     /* margin-top: 30%; */
-    border-radius: 50%;
 }
 .start:hover{
     cursor:cell;
@@ -55,9 +55,10 @@ body{
     
 }
 .title{
-    font-size: xx-large;
-    margin-top: 10%;
-
+    font-size: 4rem;
+    margin-bottom: 7%;
+    text-decoration: underline;
+    font-style: italic;
 }
 
 .active{
@@ -78,12 +79,13 @@ body{
 } 
 
 #counter{
-    font-size: x-large;
+    font-size: xx-large;
+    color:
     
 }
 .level{
     font-size: x-large;
-    border-radius: 50%;
+    margin-top: 20%;
 }
 .level:hover{
     background-color: red;
@@ -106,11 +108,15 @@ body{
     height: 200px;
     line-height: 25px;
 }
-@keyframes colorChange{
-    from{
-        opacity: 1;
-    }
-    to{
-        opacity: .2;
-    }
+.greenColor{
+    color: green;
+}
+.redColor{
+    color: red;
+}
+.yellowColor{
+    color:yellow;
+}
+.blueColor{
+    color:blue;
 }

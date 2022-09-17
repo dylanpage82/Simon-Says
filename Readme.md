@@ -5,11 +5,11 @@
 
 ## Game Description
 
-    Simon says is a game were you have to follow along with what the computer chose and choose the right answer.
+    Simon says is a game where you have to follow along with what the computer chose and choose the right answer.
 
 ## How To Play
 
-    Begin by selecting a difficulty, Beginner equals 5 correct choices, Intermediate equals 10 correct choices and Hard equals 20 correct choices. You must wait till after the computer goes for your answer to count. If you choose the wrong answer you will loose and the game will restart.
+    Begin by selecting a difficulty, Beginner equals 5 correct choices, Intermediate equals 10 correct choices and Hard equals 20 correct choices. You must wait until after the computer goes for your answer to count. If you choose the wrong answer you will loose and the game will restart.
 
 
 #### Languages
