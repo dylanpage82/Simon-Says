@@ -50,7 +50,7 @@ body{
 .start{
     font-size:x-large;
     text-align: center;
-    margin-top: 30%;
+    /* margin-top: 30%; */
     border-radius: 50%;
 }
 .start:hover{
@@ -63,11 +63,10 @@ body{
     margin-top: 10%;
 
 }
-.score{
-    font-size:40px;
-}
+
 .active{
-    background-color: white;
+   animation-name: colorChange;
+   animation-duration: 1s;
 }
  .center{
     width: 220px;
@@ -82,3 +81,41 @@ body{
     background-color: gray;
     border:solid 5px black;
 } 
+
+#counter{
+    font-size: x-large;
+    
+}
+.level{
+    font-size: x-large;
+    border-radius: 50%;
+}
+.level:hover{
+    background-color: red;
+    cursor: pointer;
+}
+#modal{
+    display: none;
+}
+#modal.open{
+    display: inline-block;
+    border:solid 5px black;
+    text-align:center;
+    background-color: white;
+    line-height: 120%;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    line-height: 25px;
+}
+@keyframes colorChange{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: .1;
+    }
+}

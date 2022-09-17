@@ -12,15 +12,24 @@ const blue = document.querySelector('.blue');
 const computerChoices = [];
 let playerChoices = [];
 const counter = document.getElementById('counter')
-const start = document.querySelector('.start')
+const start = document.querySelector('.start');
 let correctChoice;
-const choices = [
-    green, red, yellow, blue
-];
+const level = document.querySelector('.level');
+const modal = document.getElementById('modal');
+const beginnerButton = document.querySelector('.beginner');
+const intermediateButton = document.querySelector('.intermediate');
+const hardButton = document.querySelector('.hard');
+let beginner = false;
+let intermediate = false;
+let hard = false;
 
-start.addEventListener('click', (event) =>{
+// const choices = [
+//     green, red, yellow, blue
+// ];
+
+start.addEventListener('click', () =>{
     play();
-    let on = true;
+    
 });
 
 function play () {
@@ -30,21 +39,24 @@ function play () {
     turn = 1;
     counter.innerHTML= 1;
     correctChoice = true;
-    for(i=0; i<10; i++){
-        computerChoices.push(Math.floor(Math.random() *4) +1);
+    for(i=0; i<20; i++){
+        computerChoices.push(Math.ceil(Math.random() *4));
     }
     //console.log(computerChoices)
     computerTurn = true;
-    intervalId = setInterval(gameTurn, 800);
+    intervalId = setInterval(gameTurn, 1000);
 }
 function gameTurn(){
-    on = false
     if(flash == turn){
         clearInterval(intervalId);
         computerTurn = false;
         resetLight();
-        on = true;
     }
+    // if(beginnerButton.clicked = true){
+    //     beginner = true;
+    // }else if(intermediateButton.clicked = true){
+    //     intermediate = true;
+    // }
     if(computerTurn){
         resetLight();
             if(computerChoices[flash] ==1){
@@ -60,7 +72,6 @@ function gameTurn(){
                 blue.classList.add('active')
             }
             flash++
-            
         }
     }
 function resetLight(){
@@ -68,6 +79,7 @@ function resetLight(){
     red.classList.remove('active');
     yellow.classList.remove('active');
     blue.classList.remove('active');
+    
 }
 function checkAnswers(){
     if(playerChoices[playerChoices.length -1] !== computerChoices[playerChoices.length -1]){
@@ -76,6 +88,13 @@ function checkAnswers(){
     if(playerChoices.length ==10 && correctChoice){
         winGame()
     }
+    // if(beginner = true &&  playerChoices.length ==5 && correctChoice){
+    //     winGame()
+    // }else if(intermediate = true &&  playerChoices.length ==10 && correctChoice){
+    //    winGame()
+    // }else if(hard = true &&  playerChoices.length ==20 && correctChoice){
+    //     winGame()
+    // }
     if(correctChoice == false){
         counter.innerHTML = "YOU LOOSE!";
         setTimeout(() =>{
@@ -89,39 +108,65 @@ function checkAnswers(){
         computerTurn = true;
         flash = 0;
         counter.innerHTML = turn;
-        intervalId = setInterval(gameTurn, 800);
+        intervalId = setInterval(gameTurn, 1000);
     }
 }
+function openModal(){
+    modal.classList.add('open')
+}
+function closeModal(){
+    modal.classList.remove('open')
+}
+
+
+
+level.addEventListener('click', () =>{
+    openModal();
+})
+
+beginnerButton.addEventListener('click', () =>{
+    console.log('beginner button')
+    beginner = true;
+    closeModal();
+})
+
+intermediateButton.addEventListener('click', () =>{
+    intermediate = true;
+    closeModal();
+})
+
+hardButton.addEventListener('click', () =>{
+    hard = true;
+    closeModal();
+})
 
 green.addEventListener('click', () =>{
-    if(on){
         playerChoices.push(1);
         checkAnswers();
-    }
+    
 });
 
 red.addEventListener('click', () =>{
-    if(on){
     playerChoices.push(2);
     checkAnswers();
-    }
+    
 });
 
 yellow.addEventListener('click', () =>{
-    if(on){
     playerChoices.push(3);
     checkAnswers();
-    }
+    
 });
 
 blue.addEventListener('click', () => {
-    if(on){
     playerChoices.push(4);
     checkAnswers();
-    }
+    
 });
+
+
 
 function winGame(){
     counter.innerHTML = 'YOU WIN!'
     win = true;
-} 
+}
