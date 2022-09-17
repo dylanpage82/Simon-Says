@@ -15,7 +15,7 @@ const hardButton = document.querySelector('.hard');
 let beginner = false;
 let intermediate = false;
 let hard = false;
-let rank = false;
+let rank = false;///level selected
 let win = false;
 let computerPlays;///number of times the computer turn has ran
 
@@ -24,7 +24,7 @@ let computerPlays;///number of times the computer turn has ran
 function play () {
     computerPlays = 0;
     intervalId = 0;
-    turn = 1;
+    playerTurn = 1;
     counter.innerHTML= 1;
     for(i=0; i<=20; i++){
         computerChoices.push(Math.ceil(Math.random() *4));
@@ -33,7 +33,7 @@ function play () {
     intervalId=setInterval(gameTurn, 1000)
 }
 function gameTurn(){
-    if(computerPlays == turn){
+    if(computerPlays == playerTurn){
         clearInterval(intervalId);
         computerTurn = false;
         resetLight();
@@ -82,12 +82,12 @@ function checkAnswers(){
         }, 3000);
         
     }
-    if(turn == playerChoices.length && correctChoice && !win){
-        turn++
+    if(playerTurn == playerChoices.length && correctChoice && !win){
+        playerTurn++
         playerChoices = [];
         computerTurn = true;
         computerPlays = 0;
-        counter.innerHTML = turn;
+        counter.innerHTML = playerTurn;
         intervalId = setInterval(gameTurn, 1000);
     }
 }
