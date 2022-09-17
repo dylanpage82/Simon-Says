@@ -25,7 +25,7 @@ function play () {
     computerPlays = 0;
     intervalId = 0;
     turn = 1;
-    // counter.innerHTML= 1;
+    counter.innerHTML= 1;
     for(i=0; i<=20; i++){
         computerChoices.push(Math.ceil(Math.random() *4));
     }
@@ -86,7 +86,7 @@ function checkAnswers(){
         turn++
         playerChoices = [];
         computerTurn = true;
-        flash = 0;
+        computerPlays = 0;
         counter.innerHTML = turn;
         intervalId = setInterval(gameTurn, 1000);
     }
