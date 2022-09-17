@@ -61,8 +61,7 @@ body{
 }
 
 .active{
-   animation-name: colorChange;
-   animation-duration: 1s;
+   background-color: white;
 }
  .center{
     width: 220px;

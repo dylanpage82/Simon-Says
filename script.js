@@ -6,7 +6,7 @@ const computerChoices = [];
 let playerChoices = [];
 const counter = document.getElementById('counter')
 const start = document.querySelector('.start');
-let correctChoice;///determines if the players choice = computers choice
+let correctChoice = true;///determines if the players choice = computers choice
 const level = document.querySelector('.level');
 const modal = document.getElementById('modal');
 const beginnerButton = document.querySelector('.beginner');
@@ -16,51 +16,45 @@ let beginner = false;
 let intermediate = false;
 let hard = false;
 let rank = false;
-
+let win = false;
+let computerPlays;///number of times the computer turn has ran
 
 
 
 function play () {
-    win = false;
-    flash = 0;
+    computerPlays = 0;
     intervalId = 0;
     turn = 1;
-    counter.innerHTML= 1;
-    correctChoice = true;
-    for(i=0; i<20; i++){
+    // counter.innerHTML= 1;
+    for(i=0; i<=20; i++){
         computerChoices.push(Math.ceil(Math.random() *4));
     }
     computerTurn = true;
     intervalId=setInterval(gameTurn, 1000)
 }
 function gameTurn(){
-    if(flash == turn){
+    if(computerPlays == turn){
         clearInterval(intervalId);
         computerTurn = false;
         resetLight();
     }
-    // if(beginnerButton.clicked === true){
-    //     beginner = true;
-    // }else if(intermediateButton.clicked === true){
-    //     intermediate = true;
-    // }else if(hardButton.clicked === true){
-    //     hard = true;
-    // }
     if(computerTurn){
         resetLight();
-            if(computerChoices[flash] ==1){
+        setTimeout(() => {
+            if(computerChoices[computerPlays] ==1){
                 green.classList.add('active')
             }
-            if(computerChoices[flash] ==2){
+            if(computerChoices[computerPlays] ==2){
                 red.classList.add('active')
             }
-            if(computerChoices[flash] ==3){
+            if(computerChoices[computerPlays] ==3){
                 yellow.classList.add('active')
             }
-            if(computerChoices[flash] ==4){
+            if(computerChoices[computerPlays] ==4){
                 blue.classList.add('active')
             }
-            flash++
+            computerPlays++
+        }, 300);
         }
     }
 function resetLight(){
