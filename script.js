@@ -1,10 +1,3 @@
-// // playerChoices = []
-// // computerChoices = []
-// // Function that fires off when you click start or when the player
-//  hits a right answer that simply randomly adds one of the four colors to 
-//  the computerChoices
-// // Then when the player clicks one of them, you just check if that
-//  matches the computer's choice
 const green = document.querySelector('.green');
 const red = document.querySelector('.red');
 const yellow = document.querySelector('.yellow');
@@ -13,7 +6,7 @@ const computerChoices = [];
 let playerChoices = [];
 const counter = document.getElementById('counter')
 const start = document.querySelector('.start');
-let correctChoice;
+let correctChoice;///determines if the players choice = computers choice
 const level = document.querySelector('.level');
 const modal = document.getElementById('modal');
 const beginnerButton = document.querySelector('.beginner');
@@ -22,15 +15,10 @@ const hardButton = document.querySelector('.hard');
 let beginner = false;
 let intermediate = false;
 let hard = false;
+let rank = false;
 
-// const choices = [
-//     green, red, yellow, blue
-// ];
 
-start.addEventListener('click', () =>{
-    play();
-    
-});
+
 
 function play () {
     win = false;
@@ -42,9 +30,8 @@ function play () {
     for(i=0; i<20; i++){
         computerChoices.push(Math.ceil(Math.random() *4));
     }
-    //console.log(computerChoices)
     computerTurn = true;
-    intervalId = setInterval(gameTurn, 1000);
+    intervalId=setInterval(gameTurn, 1000)
 }
 function gameTurn(){
     if(flash == turn){
@@ -52,10 +39,12 @@ function gameTurn(){
         computerTurn = false;
         resetLight();
     }
-    // if(beginnerButton.clicked = true){
+    // if(beginnerButton.clicked === true){
     //     beginner = true;
-    // }else if(intermediateButton.clicked = true){
+    // }else if(intermediateButton.clicked === true){
     //     intermediate = true;
+    // }else if(hardButton.clicked === true){
+    //     hard = true;
     // }
     if(computerTurn){
         resetLight();
@@ -85,16 +74,13 @@ function checkAnswers(){
     if(playerChoices[playerChoices.length -1] !== computerChoices[playerChoices.length -1]){
         correctChoice = false;
     }
-    if(playerChoices.length ==10 && correctChoice){
+    if(beginner === true &&  playerChoices.length ==5 && correctChoice){
+        winGame()
+    }else if(intermediate === true &&  playerChoices.length ==10 && correctChoice){
+       winGame()
+    }else if(hard === true &&  playerChoices.length ==20 && correctChoice){
         winGame()
     }
-    // if(beginner = true &&  playerChoices.length ==5 && correctChoice){
-    //     winGame()
-    // }else if(intermediate = true &&  playerChoices.length ==10 && correctChoice){
-    //    winGame()
-    // }else if(hard = true &&  playerChoices.length ==20 && correctChoice){
-    //     winGame()
-    // }
     if(correctChoice == false){
         counter.innerHTML = "YOU LOOSE!";
         setTimeout(() =>{
@@ -122,48 +108,70 @@ function closeModal(){
 
 level.addEventListener('click', () =>{
     openModal();
+    
 })
 
 beginnerButton.addEventListener('click', () =>{
-    console.log('beginner button')
     beginner = true;
+    rank = true;
     closeModal();
 })
 
 intermediateButton.addEventListener('click', () =>{
     intermediate = true;
-    closeModal();
+    rank = true;
+     closeModal();
 })
 
 hardButton.addEventListener('click', () =>{
     hard = true;
+    rank = true;
     closeModal();
 })
 
 green.addEventListener('click', () =>{
+    if(computerTurn === true){
+        return;
+    }else{
         playerChoices.push(1);
         checkAnswers();
-    
+    }
 });
 
 red.addEventListener('click', () =>{
+    if(computerTurn === true){
+        return;
+    }else{
     playerChoices.push(2);
     checkAnswers();
-    
+    }
 });
 
 yellow.addEventListener('click', () =>{
+    if(computerTurn ===true){
+        return;
+    }else{
     playerChoices.push(3);
     checkAnswers();
-    
+    }
 });
 
 blue.addEventListener('click', () => {
+    if(computerTurn ===true){
+        return;
+    }else{
     playerChoices.push(4);
     checkAnswers();
-    
+    }
 });
 
+start.addEventListener('click', () =>{
+    if(rank != true){
+        alert('Please Select a level');
+    }else if(rank === true){
+    play();
+    }
+});
 
 
 function winGame(){

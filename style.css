@@ -27,24 +27,20 @@ body{
 .red{
     background-color: red;
     border-top-right-radius: 100%;
-     
     
 }
 .green{
     background-color: green;
     border-top-left-radius: 100%;
-    
   }
 
 .blue{
     background-color: blue;
     border-bottom-right-radius: 100%;
-    
 }
 .yellow{
   background-color: yellow;
   border-bottom-left-radius: 100%;
-  
 }
 
 .start{
@@ -116,6 +112,6 @@ body{
         opacity: 1;
     }
     to{
-        opacity: .1;
+        opacity: .2;
     }
 }
