@@ -202,4 +202,7 @@ start.addEventListener('click', () =>{
 const winGame = () => {
     counter.innerHTML = 'YOU WIN!'
     win = true;
+    setTimeout(() =>{
+        location.reload()
+    },2000)
 }
