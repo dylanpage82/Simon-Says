@@ -47,6 +47,7 @@ body{
 .start{
     font-size:x-large;
     text-align: center;
+    background-color: gray;
     /* margin-top: 30%; */
 }
 .start:hover{
@@ -74,18 +75,19 @@ body{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    background-color: gray;
+    background-color: white;
     border:solid 5px black;
 } 
 
 #counter{
     font-size: xx-large;
-    color:
+    color:red;
     
 }
 .level{
     font-size: x-large;
     margin-top: 20%;
+    background-color: gray;
 }
 .level:hover{
     background-color: red;
